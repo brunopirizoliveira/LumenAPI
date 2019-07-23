@@ -21,5 +21,10 @@ $router->get('/', function () use ($router) {
 $router->group(
     ['prefix' => '/api'],
     function() use ($router) {
-        $router->get('/regras', 'RegrasController@index');
+        $router->get('regras', 'RegrasController@index');
+        $router->post('regras', 'RegrasController@store');
+
+        $router->get('categorias', 'CategoriasController@index');
+        $router->get('categorias/{id}', 'CategoriasController@get');
+        $router->post('categorias', 'CategoriasController@store');
 });
