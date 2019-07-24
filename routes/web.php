@@ -25,6 +25,8 @@ $router->group(
         $router->post('regras', 'RegrasController@store');
 
         $router->get('categorias', 'CategoriasController@index');
-        $router->get('categorias/{id}', 'CategoriasController@get');
+        $router->get('categorias/{id}', 'CategoriasController@show');
         $router->post('categorias', 'CategoriasController@store');
+        $router->put('categorias/{id}', 'CategoriasController@update');
+        $router->delete('categorias/{id}', 'CategoriasController@destroy');
 });
