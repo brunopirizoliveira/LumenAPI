@@ -18,15 +18,19 @@ $router->get('/', function () use ($router) {
 
 /* Grupos de Rota */
 
-$router->group(
-    ['prefix' => '/api'],
-    function() use ($router) {
-        $router->get('regras', 'RegrasController@index');
-        $router->post('regras', 'RegrasController@store');
+$router->group(['prefix' => '/api'], function() use ($router) {
 
-        $router->get('categorias', 'CategoriasController@index');
-        $router->get('categorias/{id}', 'CategoriasController@show');
-        $router->post('categorias', 'CategoriasController@store');
-        $router->put('categorias/{id}', 'CategoriasController@update');
-        $router->delete('categorias/{id}', 'CategoriasController@destroy');
+    $router->group(['prefix' => '/regras'], function() use($router) {
+        $router->get('', 'RegrasController@index');
+        $router->post('', 'RegrasController@store');
+    });
+
+    $router->group(['prefix' => '/categorias'], function() use($router) {
+        $router->get('', 'CategoriasController@index');
+        $router->get('{id}', 'CategoriasController@show');
+        $router->post('', 'CategoriasController@store');
+        $router->put('{id}', 'CategoriasController@update');
+        $router->delete('{id}', 'CategoriasController@destroy');
+    });
+
 });
