@@ -3,20 +3,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Regra;
-use Illuminate\Http\Request;
 
-class RegrasController
+class RegrasController extends BaseController
 {
-    public function index()
+    public function __construct()
     {
-        return Regra::all();
-    }
-
-    public function store(Request $request)
-    {
-        return response()
-            ->json(Regra::create(['nome' => $request->nome, 'descricao' => $request->descricao]), 201);
+        $this->classe = Regra::class;
     }
 }
