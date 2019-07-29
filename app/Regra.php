@@ -11,7 +11,13 @@ class Regra extends Model
     public $timestamps = false;
     public $fillable = ['nome', 'descricao', 'categoria_id'];
 
-    public function categorias() {
-        $this->hasMany(Categoria::class);
+    public function categoria() {
+        $this->belongsTo(Categoria::class);
     }
+
+    public function getCategoriaIdAttribute($categoria_id)
+    {
+        return (integer) $categoria_id;
+    }
+
 }
