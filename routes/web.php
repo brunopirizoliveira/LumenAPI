@@ -23,6 +23,9 @@ $router->group(['prefix' => '/api'], function() use ($router) {
     $router->group(['prefix' => '/regras'], function() use($router) {
         $router->get('', 'RegrasController@index');
         $router->post('', 'RegrasController@store');
+        $router->get('{id}', 'RegrasController@show');
+        $router->put('{id}', 'RegrasController@update');
+        $router->delete('{id}', 'RegrasController@destroy');
     });
 
     $router->group(['prefix' => '/categorias'], function() use($router) {
@@ -31,6 +34,8 @@ $router->group(['prefix' => '/api'], function() use ($router) {
         $router->post('', 'CategoriasController@store');
         $router->put('{id}', 'CategoriasController@update');
         $router->delete('{id}', 'CategoriasController@destroy');
+
+        $router->get('{categoria_id}/regras', 'RegrasController@regrasPorCategoria');
     });
 
 });
