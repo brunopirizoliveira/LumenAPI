@@ -17,7 +17,7 @@ class Categoria extends Model
         return $this->hasMany(Regra::class);
     }
 
-    public function getLinksAttribute($links): array
+    public function getLinksAttribute(): array
     {
         return [
             'regras' => 'api/categorias/' . $this->id . '/regras'

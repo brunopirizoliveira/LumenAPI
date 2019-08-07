@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 
 /* Grupos de Rota */
 
-$router->group(['prefix' => '/api'], function() use ($router) {
+$router->group(['prefix' => '/api', 'middleware' => 'autenticador'], function() use ($router) {
 
     $router->group(['prefix' => '/regras'], function() use($router) {
         $router->get('', 'RegrasController@index');
@@ -39,3 +39,5 @@ $router->group(['prefix' => '/api'], function() use ($router) {
     });
 
 });
+
+$router->post('/api/login', 'TokenController@gerarToken');
